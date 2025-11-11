@@ -17,7 +17,7 @@ export default function SendTransactionForm() {
     try {
       setStatus("Pending...");
       const response = await axios.post(`${backendURL}/api/algorand/send`, {
-        recipient,
+        to: recipient,
         mnemonic,
         amount: parseFloat(amount),
       });
