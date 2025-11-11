@@ -9,16 +9,19 @@ dotenv.config();
 
 
 const app = express();
-app.use(cors());
 app.use(
   cors({
     origin: [
       "https://mern-algorand.vercel.app",
+      "http://localhost:5173",
     ],
-    methods: ["GET", "POST"],
-    credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
   })
 );
+
+app.options("*", cors());
+
 app.use(express.json());
 
 connectDB();
