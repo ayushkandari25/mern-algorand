@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/card.js";
+import { Input } from "@/components/ui/input.js";
+import { Button } from "@/components/ui/button.js";
 
 export default function SendTransactionForm() {
-  const [recipient, setRecipient] = useState("");
-  const [mnemonic, setMnemonic] = useState("");
-  const [amount, setAmount] = useState("");
-  const [txId, setTxId] = useState("");
-  const [status, setStatus] = useState("");
+  const [recipient, setRecipient] = useState<string>("");
+  const [mnemonic, setMnemonic] = useState<string>("");
+  const [amount, setAmount] = useState<string>("");
+  const [txId, setTxId] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
 
-  const backendURL = import.meta.env.VITE_BACKEND_URL
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
 
   const handleSend = async () => {
     try {
@@ -42,17 +42,23 @@ export default function SendTransactionForm() {
         <Input
           placeholder="Recipient Address"
           value={recipient}
-          onChange={(e) => setRecipient(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setRecipient(e.target.value)
+          }
         />
         <Input
           placeholder="Mnemonic"
           value={mnemonic}
-          onChange={(e) => setMnemonic(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setMnemonic(e.target.value)
+          }
         />
         <Input
           placeholder="Amount (e.g., 0.1)"
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setAmount(e.target.value)
+          }
         />
         <Button className="w-full" onClick={handleSend}>
           Send Transaction
